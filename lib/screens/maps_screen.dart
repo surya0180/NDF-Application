@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ndf_app/models/place.dart';
@@ -54,12 +52,16 @@ class _MapScreenState extends State<MapScreen> {
           zoom: 16,
         ),
         onTap: widget.isSelecting ? _selectLocation : null,
-        markers: _pickedLocation == null
+        markers: (_pickedLocation == null && widget.isSelecting)
             ? {}
             : {
                 Marker(
                   markerId: MarkerId('m1'),
-                  position: _pickedLocation,
+                  position: _pickedLocation ??
+                      LatLng(
+                        widget.initialPosition.latitude,
+                        widget.initialPosition.longitude,
+                      ),
                 ),
               },
       ),
