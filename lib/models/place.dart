@@ -5,10 +5,10 @@ class PlaceLocation {
   final double latitude;
   final double longitude;
 
-  PlaceLocation(
+  const PlaceLocation({
     this.latitude,
     this.longitude,
-  );
+  });
 }
 
 class Place {
